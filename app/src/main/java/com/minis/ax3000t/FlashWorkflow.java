@@ -114,7 +114,7 @@ public final class FlashWorkflow {
             progress(55, "写入非活动启动槽位");
             String flash = "set -e; "
                     + "ubidetach -m " + target.index + " >/dev/null 2>&1 || true; "
-                    + "ubiformat /dev/mtd" + target.index + " -y -f " + remoteInitramfs + "; 
+                    + "ubiformat /dev/mtd" + target.index + " -y -f " + remoteInitramfs + "; "
                     + "nvram set boot_wait=on; nvram set uart_en=1; "
                     + "nvram set flag_boot_rootfs=" + (slot.equals("0") ? "1" : "0") + "; "
                     + "nvram set flag_last_success=" + (slot.equals("0") ? "1" : "0") + "; "
