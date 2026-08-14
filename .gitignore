@@ -1,0 +1,9 @@
+.gradle/
+build/
+app/build/
+local.properties
+*.iml
+.idea/
+
+# The release keystore is intentionally committed only to the private repository.
+# Never copy app/keystore/ into a public repository.
