@@ -130,8 +130,10 @@ public final class RouterBackup {
         File archive = new File(root, directory.getName() + ".zip");
         zipDirectory(directory, archive);
         if (archive.length() < 1024) throw new IOException("备份归档生成失败");
+        List<MtdPartition> selectedPartitions = new ArrayList<>();
+        for (BackupSpec spec : selected) selectedPartitions.add(spec.partition);
         log.log("官方分区备份完成：" + humanBytes(archive.length()));
-        return new Result(directory, archive, selected, slot);
+        return new Result(directory, archive, selectedPartitions, slot);
     }
 
     private static List<MtdPartition> parse(String text) {

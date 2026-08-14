@@ -78,7 +78,7 @@ public final class NetworkUtils {
                 boolean ethernet = looksLikeEthernet(name);
                 Enumeration<InetAddress> addresses = networkInterface.getInetAddresses();
                 for (InetAddress address : Collections.list(addresses)) {
-                    if (!(address instanceof Inet4Address) || address.isLoopback() || address.isLinkLocalAddress()) continue;
+                    if (!(address instanceof Inet4Address) || address.isLoopbackAddress() || address.isLinkLocalAddress()) continue;
                     String value = address.getHostAddress();
                     if (ethernet) return new Status(true, value, name, "已检测到有线网络 " + name + "：" + value);
                     if (fallbackAddress.isEmpty()) {
